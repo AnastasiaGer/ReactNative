@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { View, StyleSheet, TextInput, Button } from 'react-native'
+import { View, StyleSheet, TextInput, Button, Alert } from 'react-native'
 
 export const AddTodo = ({ onSubmit }) => {
   const [value, setValue] = useState('')
@@ -8,7 +8,7 @@ export const AddTodo = ({ onSubmit }) => {
       onSubmit(value)
       setValue('')
     } else {
-      //error
+      Alert.alert('Todo can"t be empty')
     }
   }
 
@@ -17,7 +17,9 @@ export const AddTodo = ({ onSubmit }) => {
       <TextInput style={styles.input}
       onChangeText={text => setValue(text)}
       value={value}
-      placeholder='Add todo'/>
+      placeholder='Add todo'
+      autoCorrect={false}
+      autoCapitalize='none'/>
       <Button title='Add' onPress={pressHandler} />
     </View>
   )
